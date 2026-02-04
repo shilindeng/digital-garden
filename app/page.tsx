@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Terminal } from "lucide-react";
 import { getPosts } from "@/lib/data";
 
-export const revalidate = 60; // ISR: Revalidate every 60 seconds
+export const revalidate = 60; // ISR: 每60秒重新生成
 
 export default async function Home() {
   const posts = await getPosts();
@@ -15,9 +15,9 @@ export default async function Home() {
   return (
     <main className="min-h-screen p-4 md:p-24 bg-background">
       <div className="max-w-7xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">Digital Garden</h1>
+        <h1 className="text-4xl font-bold tracking-tight mb-4">数字花园</h1>
         <p className="text-muted-foreground text-lg">
-          A collection of thoughts, experiments, and code snippets.
+          记录想法、实验与代码片段。
         </p>
       </div>
 
@@ -34,8 +34,8 @@ export default async function Home() {
         <BentoGridItem
           className="md:col-span-1 md:row-span-2"
           header={<StackCard />}
-          title="Tech Stack"
-          description="My preferred weapons of choice."
+          title="技术栈"
+          description="我的开发利器"
           icon={<Terminal className="h-4 w-4 text-neutral-500" />}
         />
 
@@ -57,7 +57,7 @@ export default async function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                   </span>
-                  <span className="text-emerald-500 font-bold text-sm">Open to Work</span>
+                  <span className="text-emerald-500 font-bold text-sm">寻找机会中</span>
                </div>
             </div>
           }
@@ -67,8 +67,8 @@ export default async function Home() {
         <BentoGridItem
           className="md:col-span-2 md:row-span-1"
           header={<PostListCard posts={posts} />}
-          title="Recent Writings"
-          description="Thoughts on engineering and design."
+          title="最近更新"
+          description="关于工程与设计的思考"
           icon={<Terminal className="h-4 w-4 text-neutral-500" />}
         />
 
@@ -77,13 +77,13 @@ export default async function Home() {
           className="md:col-span-2 md:row-span-1 bg-gradient-to-br from-indigo-500/10 to-purple-500/10"
           header={
              <div className="flex flex-col justify-center h-full p-4">
-                <Badge className="w-fit mb-2">Featured Project</Badge>
+                <Badge className="w-fit mb-2">精选项目</Badge>
                 <h3 className="text-lg font-bold">OpenClaw</h3>
-                <p className="text-sm text-muted-foreground">The AI Agent framework powering this demo.</p>
+                <p className="text-sm text-muted-foreground">驱动此 Demo 的 AI Agent 框架。</p>
              </div>
           }
-          title="Project Spotlight"
-          description="Currently building."
+          title="项目聚焦"
+          description="正在构建中"
           icon={<Terminal className="h-4 w-4 text-neutral-500" />}
         />
 
