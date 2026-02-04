@@ -5,8 +5,13 @@ import { StackCard } from "@/components/StackCard";
 import { MapCard } from "@/components/MapCard";
 import { Badge } from "@/components/ui/badge";
 import { Terminal } from "lucide-react";
+import { getPosts } from "@/lib/data";
 
-export default function Home() {
+export const revalidate = 60; // ISR: Revalidate every 60 seconds
+
+export default async function Home() {
+  const posts = await getPosts();
+
   return (
     <main className="min-h-screen p-4 md:p-24 bg-background">
       <div className="max-w-7xl mx-auto mb-12">
@@ -61,7 +66,7 @@ export default function Home() {
         {/* Recent Posts - Wide */}
         <BentoGridItem
           className="md:col-span-2 md:row-span-1"
-          header={<PostListCard />}
+          header={<PostListCard posts={posts} />}
           title="Recent Writings"
           description="Thoughts on engineering and design."
           icon={<Terminal className="h-4 w-4 text-neutral-500" />}
