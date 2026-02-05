@@ -1,19 +1,13 @@
-export const runtime = 'edge';
-export const revalidate = 60; // ISR: 每60秒重新生成
-
 import { BentoGrid, BentoGridItem } from "@/components/bento/Grid";
 import { ProfileCard } from "@/components/ProfileCard";
-import { PostListCard } from "@/components/PostCard";
+import { PostList } from "@/components/PostList";
 import { StackCard } from "@/components/StackCard";
 import { MapCard } from "@/components/MapCard";
 import { Badge } from "@/components/ui/badge";
 import { Terminal } from "lucide-react";
-import { getPosts } from "@/lib/data";
 import Link from "next/link";
 
-export default async function Home() {
-  const posts = await getPosts();
-
+export default function Home() {
   return (
     <main className="min-h-screen p-4 md:p-24 bg-background">
       <div className="max-w-7xl mx-auto mb-12">
@@ -69,10 +63,10 @@ export default async function Home() {
           />
         </Link>
 
-        {/* Recent Posts - Wide */}
+        {/* Recent Posts - Wide - Client Side Fetched */}
         <BentoGridItem
           className="md:col-span-2 md:row-span-1"
-          header={<PostListCard posts={posts} />}
+          header={<PostList />}
           title="最近更新"
           description="关于工程与设计的思考"
           icon={<Terminal className="h-4 w-4 text-neutral-500" />}
