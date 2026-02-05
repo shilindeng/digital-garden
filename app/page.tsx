@@ -2,6 +2,14 @@ export const runtime = 'edge';
 export const revalidate = 60; // ISR: 每60秒重新生成
 
 import { BentoGrid, BentoGridItem } from "@/components/bento/Grid";
+import { ProfileCard } from "@/components/ProfileCard";
+import { PostListCard } from "@/components/PostCard";
+import { StackCard } from "@/components/StackCard";
+import { MapCard } from "@/components/MapCard";
+import { Badge } from "@/components/ui/badge";
+import { Terminal } from "lucide-react";
+import { getPosts } from "@/lib/data";
+import Link from "next/link";
 
 export default async function Home() {
   const posts = await getPosts();
@@ -42,20 +50,24 @@ export default async function Home() {
         />
 
         {/* Status / Placeholder - Small Square */}
-        <BentoGridItem
-          className="md:col-span-1 md:row-span-1"
-          header={
-            <div className="flex items-center justify-center h-full w-full bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-               <div className="flex flex-col items-center gap-2">
-                 <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                  </span>
-                  <span className="text-emerald-500 font-bold text-sm">寻找机会中</span>
-               </div>
-            </div>
-          }
-        />
+        <Link href="/blog/hello-world" className="md:col-span-1 md:row-span-1 block">
+          <BentoGridItem
+            className="h-full"
+            header={
+              <div className="flex items-center justify-center h-full w-full bg-emerald-500/10 rounded-xl border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
+                 <div className="flex flex-col items-center gap-2">
+                   <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    <span className="text-emerald-500 font-bold text-sm">Hello World</span>
+                 </div>
+              </div>
+            }
+            title=""
+            description=""
+          />
+        </Link>
 
         {/* Recent Posts - Wide */}
         <BentoGridItem
