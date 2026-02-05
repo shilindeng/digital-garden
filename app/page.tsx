@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="min-h-screen p-4 md:p-24 bg-background">
       <div className="max-w-7xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">数字花园</h1>
+        <h1 className="text-4xl font-bold tracking-tight mb-4">数字花园 (v2.0)</h1>
         <p className="text-muted-foreground text-lg">
           记录想法、实验与代码片段。
         </p>
