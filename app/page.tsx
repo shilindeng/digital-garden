@@ -1,13 +1,7 @@
-import { BentoGrid, BentoGridItem } from "@/components/bento/Grid";
-import { ProfileCard } from "@/components/ProfileCard";
-import { PostListCard } from "@/components/PostCard";
-import { StackCard } from "@/components/StackCard";
-import { MapCard } from "@/components/MapCard";
-import { Badge } from "@/components/ui/badge";
-import { Terminal } from "lucide-react";
-import { getPosts } from "@/lib/data";
-
+export const runtime = 'edge';
 export const revalidate = 60; // ISR: 每60秒重新生成
+
+import { BentoGrid, BentoGridItem } from "@/components/bento/Grid";
 
 export default async function Home() {
   const posts = await getPosts();
