@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { notFound } from 'next/navigation'
 
+export const runtime = 'edge';
 export const revalidate = 60
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
