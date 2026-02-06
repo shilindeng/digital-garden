@@ -10,6 +10,10 @@ export interface Post {
   tags: string[] | null;
   published: boolean;
   created_at: string;
+  source?: 'weibo' | 'zhihu' | 'twitter' | null;  // 来源
+  category?: string | null;  // 分类
+  view_count?: number;  // 阅读量
+  is_trending?: boolean;  // 热门标记
 }
 
 // --- Static Data (Profile & Stack) ---
