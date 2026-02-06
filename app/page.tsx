@@ -3,91 +3,154 @@ import { ProfileCard } from "@/components/ProfileCard";
 import { PostList } from "@/components/PostList";
 import { StackCard } from "@/components/StackCard";
 import { MapCard } from "@/components/MapCard";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
-import { Terminal } from "lucide-react";
+import { Terminal, Sparkles, ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-4 md:p-24 bg-background">
-      <div className="max-w-7xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">数字花园 (v2.0)</h1>
-        <p className="text-muted-foreground text-lg">
-          记录想法、实验与代码片段。
-        </p>
-      </div>
+    <>
+      <Header />
 
-      <BentoGrid>
-        {/* Profile - Large Hero */}
-        <BentoGridItem
-          className="md:col-span-2 md:row-span-2"
-          header={<ProfileCard />}
-          title=""
-          description=""
-        />
+      <main className="min-h-screen pt-24 pb-12 px-4 md:px-6">
+        {/* Hero Section */}
+        <div className="max-w-7xl mx-auto mb-16">
+          <div className="relative">
+            {/* Decorative gradient blob */}
+            <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-50 animate-pulse" />
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-accent/30 rounded-full blur-3xl opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
 
-        {/* Tech Stack - Tall Vertical */}
-        <BentoGridItem
-          className="md:col-span-1 md:row-span-2"
-          header={<StackCard />}
-          title="技术栈"
-          description="我的开发利器"
-          icon={<Terminal className="h-4 w-4 text-neutral-500" />}
-        />
+            <div className="relative">
+              <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+                <Sparkles className="w-3 h-3 mr-1" />
+                数字花园 v2.0
+              </Badge>
 
-        {/* Map - Small Square */}
-        <BentoGridItem
-          className="md:col-span-1 md:row-span-1"
-          header={<MapCard />}
-          title=""
-          description=""
-        />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
+                记录想法，
+                <br />
+                <span className="gradient-text">探索无限可能</span>
+              </h1>
 
-        {/* Status / Placeholder - Small Square */}
-        <Link href="/blog/hello-world" className="md:col-span-1 md:row-span-1 block">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-8">
+                探索 AI Agent、自动化工作流与现代 Web 开发。在这里分享技术见解与数字创作。
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover-lift shadow-lg shadow-primary/25 transition-all"
+                >
+                  浏览博客
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card/50 backdrop-blur-sm font-medium hover:bg-muted/50 transition-all"
+                >
+                  了解更多
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bento Grid */}
+        <BentoGrid>
+          {/* Profile - Large Hero */}
           <BentoGridItem
-            className="h-full"
-            header={
-              <div className="flex items-center justify-center h-full w-full bg-emerald-500/10 rounded-xl border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
-                 <div className="flex flex-col items-center gap-2">
-                   <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            className="md:col-span-2 md:row-span-2 glass-card hover-lift"
+            header={<ProfileCard />}
+            title=""
+            description=""
+          />
+
+          {/* Tech Stack - Tall Vertical */}
+          <BentoGridItem
+            className="md:col-span-1 md:row-span-2 glass-card hover-lift"
+            header={<StackCard />}
+            title="技术栈"
+            description="我的开发利器"
+            icon={<Terminal className="h-4 w-4 text-primary" />}
+          />
+
+          {/* Map - Small Square */}
+          <BentoGridItem
+            className="md:col-span-1 md:row-span-1 glass-card hover-lift"
+            header={<MapCard />}
+            title=""
+            description=""
+          />
+
+          {/* Status / Placeholder - Small Square */}
+          <Link href="/blog/hello-world" className="md:col-span-1 md:row-span-1 block">
+            <BentoGridItem
+              className="h-full glass-card hover-lift glow-border"
+              header={
+                <div className="flex items-center justify-center h-full w-full rounded-xl">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="relative">
+                      <span className="absolute inline-flex h-4 w-4 rounded-full bg-primary/40 animate-ping" />
+                      <span className="relative inline-flex rounded-full h-4 w-4 bg-primary" />
+                    </div>
+                    <span className="text-primary font-bold text-sm flex items-center gap-1">
+                      <Zap className="w-3 h-3" />
+                      Hello World
                     </span>
-                    <span className="text-emerald-500 font-bold text-sm">Hello World</span>
-                 </div>
+                  </div>
+                </div>
+              }
+              title=""
+              description=""
+            />
+          </Link>
+
+          {/* Recent Posts - Wide - Client Side Fetched */}
+          <BentoGridItem
+            className="md:col-span-2 md:row-span-1 glass-card hover-lift"
+            header={<PostList />}
+            title="最近更新"
+            description="关于工程与设计的思考"
+            icon={<Terminal className="h-4 w-4 text-primary" />}
+          />
+
+          {/* Project / Ad - Wide */}
+          <BentoGridItem
+            className="md:col-span-2 md:row-span-1 glass-card hover-lift overflow-hidden"
+            header={
+              <div className="relative flex flex-col justify-center h-full p-4">
+                {/* Gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10" />
+
+                <div className="relative">
+                  <Badge className="mb-3 bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border-indigo-500/30">
+                    精选项目
+                  </Badge>
+                  <h3 className="text-xl font-bold mb-2">OpenClaw</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    驱动此 Demo 的 AI Agent 框架，让自动化变得简单。
+                  </p>
+                  <Link
+                    href="https://openclaw.ai"
+                    target="_blank"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
+                  >
+                    了解更多
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             }
             title=""
             description=""
           />
-        </Link>
 
-        {/* Recent Posts - Wide - Client Side Fetched */}
-        <BentoGridItem
-          className="md:col-span-2 md:row-span-1"
-          header={<PostList />}
-          title="最近更新"
-          description="关于工程与设计的思考"
-          icon={<Terminal className="h-4 w-4 text-neutral-500" />}
-        />
+        </BentoGrid>
+      </main>
 
-         {/* Project / Ad - Wide */}
-         <BentoGridItem
-          className="md:col-span-2 md:row-span-1 bg-gradient-to-br from-indigo-500/10 to-purple-500/10"
-          header={
-             <div className="flex flex-col justify-center h-full p-4">
-                <Badge className="w-fit mb-2">精选项目</Badge>
-                <h3 className="text-lg font-bold">OpenClaw</h3>
-                <p className="text-sm text-muted-foreground">驱动此 Demo 的 AI Agent 框架。</p>
-             </div>
-          }
-          title="项目聚焦"
-          description="正在构建中"
-          icon={<Terminal className="h-4 w-4 text-neutral-500" />}
-        />
-
-      </BentoGrid>
-    </main>
+      <Footer />
+    </>
   );
 }
