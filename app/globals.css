@@ -1,53 +1,89 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
-@theme {
-  --color-background: hsl(240 10% 3.9%);
-  --color-foreground: hsl(0 0% 98%);
-  --color-card: hsl(240 10% 3.9%);
-  --color-card-foreground: hsl(0 0% 98%);
-  --color-popover: hsl(240 10% 3.9%);
-  --color-popover-foreground: hsl(0 0% 98%);
-  --color-primary: hsl(0 0% 98%);
-  --color-primary-foreground: hsl(240 5.9% 10%);
-  --color-secondary: hsl(240 3.7% 15.9%);
-  --color-secondary-foreground: hsl(0 0% 98%);
-  --color-muted: hsl(240 3.7% 15.9%);
-  --color-muted-foreground: hsl(240 5% 64.9%);
-  --color-accent: hsl(240 3.7% 15.9%);
-  --color-accent-foreground: hsl(0 0% 98%);
-  --color-destructive: hsl(0 62.8% 30.6%);
-  --color-destructive-foreground: hsl(0 0% 98%);
-  --color-border: hsl(240 3.7% 15.9%);
-  --color-input: hsl(240 3.7% 15.9%);
-  --color-ring: hsl(240 4.9% 83.9%);
-  --radius: 0.5rem;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 140 30% 98%; /* Light green-ish white */
+    --foreground: 140 10% 10%; /* Dark green-ish black */
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 140 10% 10%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 10% 10%;
+ 
+    --primary: 142.1 76.2% 36.3%; /* Emerald 600 */
+    --primary-foreground: 355.7 100% 97.3%;
+ 
+    --secondary: 142.1 20% 92%; /* Light green background */
+    --secondary-foreground: 142.1 76.2% 36.3%; /* Emerald 600 text */
+ 
+    --muted: 140 20% 94%;
+    --muted-foreground: 140 10% 40%;
+ 
+    --accent: 142.1 20% 92%;
+    --accent-foreground: 142.1 76.2% 36.3%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 140 20% 90%;
+    --input: 140 20% 90%;
+    --ring: 142.1 76.2% 36.3%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 140 30% 5%; /* Very dark green */
+    --foreground: 140 10% 98%;
+ 
+    --card: 140 30% 7%;
+    --card-foreground: 140 10% 98%;
+ 
+    --popover: 140 30% 7%;
+    --popover-foreground: 140 10% 98%;
+ 
+    --primary: 142.1 70.6% 45.3%; /* Emerald 500 */
+    --primary-foreground: 144.9 80.4% 10%;
+ 
+    --secondary: 140 20% 15%;
+    --secondary-foreground: 140 10% 98%;
+ 
+    --muted: 140 20% 15%;
+    --muted-foreground: 140 10% 60%;
+ 
+    --accent: 140 20% 15%;
+    --accent-foreground: 140 10% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 140 10% 98%;
+ 
+    --border: 140 20% 15%;
+    --input: 140 20% 15%;
+    --ring: 142.1 70.6% 45.3%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-:root {
-  color-scheme: dark;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
 }
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
-  min-height: 100vh;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-muted);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-muted-foreground);
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/40;
 }
